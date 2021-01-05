@@ -7,7 +7,7 @@ export interface ThemeProps  {
 
 const theme = {
   colors: {
-    orange: '#000'
+    orange: '#ea5b0c'
   }
 }
 
