@@ -11,7 +11,7 @@ import { LeftArrow } from '../components/icons';
 const Detail = () => {
   const { addToast } = useToasts()
   const [state, setState] = useState({
-    linkName: 'sd',
+    linkName: '',
     linkURL: ''
   })
   const { linkName, linkURL } = state;
