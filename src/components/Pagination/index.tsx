@@ -21,7 +21,11 @@ const Pagination = ({total, onNext, onPrev, changeStep, currentPage}: Pagination
       {[...Array(totalPage)].map((e, i) => {
         const pageNumber = i + 1;
         return (
-          <Step onClick={() => changeStep(pageNumber)} active={pageNumber === currentPage}>
+          <Step
+            key={i}
+            onClick={() => changeStep(pageNumber)} 
+            active={pageNumber === currentPage}
+          >
           <span>{pageNumber}</span>
         </Step>
         )
