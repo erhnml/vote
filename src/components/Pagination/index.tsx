@@ -15,11 +15,12 @@ const Pagination = ({total, changeStep, currentPage}: PaginationProps) => {
   const totalPage = Math.ceil(total / 5);
   return (
     <Wrapper>
-      {currentPage > 1 &&  (
-        <Step onClick={() => changeStep(currentPage - 1)}>
-          Prev
-        </Step>
-      )}
+      <Step 
+        onClick={() => changeStep(currentPage - 1)}
+        disabled={currentPage === 1 }
+      >
+        Prev
+      </Step>
       {[...Array(totalPage)].map((e, i) => {
         const pageNumber = i + 1;
         return (
@@ -32,11 +33,12 @@ const Pagination = ({total, changeStep, currentPage}: PaginationProps) => {
         </Step>
         )
       })}
-      {currentPage < totalPage && (
-        <Step onClick={() => changeStep(currentPage + 1)}>
-          Next
-        </Step>
-      )}
+      <Step 
+        onClick={() => changeStep(currentPage + 1)}
+        disabled={currentPage === totalPage }
+      >
+        Next
+      </Step>
     </Wrapper>
   );
 }
@@ -46,15 +48,18 @@ const Wrapper = styled.div`
   justify-content: center;
   margin-top: 30px;
 `;
-export const Step = styled.div`
+export const Step = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  width: 40px;
+  min-width: 40px;
   height: 40px;
   margin-right: 10px;
   cursor: pointer;
+  border: none;
+  font-size: 14px;
+  background-color: #dddddd;
   ${({active}:StyledProps) => active && `
     background-color: black;
     color: white;

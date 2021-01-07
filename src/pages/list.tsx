@@ -6,6 +6,8 @@ import { useToasts } from 'react-toast-notifications'
 import Layout from '../components/Layout';
 import ListItem from '../components/ListItem';
 import Pagination from '../components/Pagination';
+import LinkButton from '../components/LinkButton';
+
 import Modal from '../components/Modal';
 import {PostContext} from '../context/PostContext';
 import { PostType } from '../types';
@@ -62,12 +64,15 @@ const List = () => {
   }
   return (
     <Layout>
-      <StyledSelect 
-        options={options} 
-        placeholder="Order by Vote"
-        value={order}
-        onChange={(val: OptionType) => setOrder(val)}
-      />
+      <Wrapper>
+        <StyledSelect 
+          options={options} 
+          placeholder="Order by Vote"
+          value={order}
+          onChange={(val: OptionType) => setOrder(val)}
+        />
+        <LinkButton to="/create" title="Add New Link" />
+      </Wrapper>
       {
        getPostList().map((post:PostType, index) => (
           <ListItem 
@@ -97,5 +102,10 @@ const List = () => {
 const StyledSelect = styled(Select)`
   margin-bottom: 20px;
   width: 200px;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 export default List;
