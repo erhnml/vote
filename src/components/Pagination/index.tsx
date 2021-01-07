@@ -38,6 +38,7 @@ const Pagination = ({total, onNext, onPrev, changeStep, currentPage}: Pagination
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 `;
 const Step = styled.div`
   display: flex;

@@ -8,7 +8,7 @@ import { ToastProvider } from 'react-toast-notifications'
 
 import PostContextProvider from '../context/PostContext';
 
-import Detail from '../pages/detail';
+import Create from '../pages/create';
 import List from '../pages/list';
 import Theme from '../theme';
 
@@ -19,7 +19,7 @@ function App() {
         <PostContextProvider>
           <Router>
             <Switch>
-              <Route path="/detail/:id" component={Detail} />
+              <Route path="/create" component={Create} />
               <Route path="/" component={List} />
             </Switch>
           </Router>

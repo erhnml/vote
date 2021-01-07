@@ -1,22 +1,36 @@
-import React, {useState} from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import {Link} from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications'
 
-import { Up, Down } from '../icons';
-export interface ListItemProps  { 
-  post: {
-    id: number,
-    name: string,
-    link: string,
-    vote: number
-  },
-  onUpVote: (id: number) => void,
-  onDownVote: (id: number) => void
-}
+import {PostContext} from '../../context/PostContext';
+import { Up, Down, Delete } from '../icons';
+import { ListItemProps } from '../../types';
 
-const ListItem = ({post, onUpVote, onDownVote}: ListItemProps) => {
+
+
+
+const ListItem = ({post, onRemove}: ListItemProps) => {
+  const {upVote, downVote} = useContext(PostContext);
+  const { addToast } = useToasts()
+
   const {id, name, link, vote} = post;
   const [hover ,setHover] = useState(false)
+
+  const handleUp =  (id: number) => {
+    upVote(id);
+    addToast('You voted up!', {
+      appearance: 'success',
+      autoDismiss: true,
+    })
+  }
+  const handleDown = (id: number) => {
+    downVote(id);
+    addToast('You voted down!', {
+      appearance: 'success',
+      autoDismiss: true,
+    })
+  }
 
   return (
     <Wrapper 
@@ -34,10 +48,21 @@ const ListItem = ({post, onUpVote, onDownVote}: ListItemProps) => {
         </TitleWrapper>
       </Content>
     <VoteWrapper>
-      <Vote onClick={() => onUpVote(id)}>
+      {
+        hover && (
+          <DeleteIcon 
+            onClick={() => onRemove(post)} 
+          />
+        )
+      }
+      <Vote 
+        onClick={() => handleUp(id)}
+      >
         <Up />
       </Vote>
-      <Vote  onClick={() => onDownVote(id)}>
+      <Vote 
+        onClick={() => handleDown(id)}
+      >
         <Down />
       </Vote>
     </VoteWrapper>
@@ -99,4 +124,7 @@ const Vote = styled.div`
   pointer-events: click;
 `;
 
+const DeleteIcon = styled(Delete)`
+  cursor: pointer;
+`;
 export default ListItem;

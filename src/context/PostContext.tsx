@@ -1,23 +1,13 @@
 import React, {useState, createContext, } from 'react';
 import data from '../data.json';
+import { PostType, ContextType } from '../types';
 
 
-interface PostType {
-  id: number,
-  name: string,
-  link: string,
-  vote: number
-}
-type ContextType = {
-  posts: PostType[],
-  removePost: (id:number) => void,
-  addPost: (post:PostType) => void,
-  upVote: (id:number) => void,
-  downVote: (id: number) => void
-}
+
 interface Props {
   children: React.ReactNode
 }
+
 export const PostContext = createContext<ContextType>({
   posts: [],
   removePost: () => {},
@@ -35,18 +25,16 @@ export const PostContextProvider = ({ children }:Props) => {
   }
 
   const addPost = (post: PostType) => {
-    const postData = {
-      ...post,
-      id: Math.floor(Math.random() * 100),
-      vote: 0
-    }
-    setPosts([...posts, postData])
+    setPosts([post, ...posts])
   }
+
   const upVote = (id: number) => {
     console.log('up')
     const modifyPosts = posts.map(( post ) => {
       if(post.id === id) {
-        post.vote = post.vote + 1
+        const timestamp = + new Date();
+        post.vote = post.vote + 1;
+        post.lastVoteTime = timestamp;
       }
       return post;
     })
@@ -55,7 +43,8 @@ export const PostContextProvider = ({ children }:Props) => {
   const downVote = (id: number) => {
     const modifyPosts = posts.map(( post ) => {
       if(post.id === id) {
-        post.vote = post.vote - 1
+        post.vote = post.vote - 1;
+        post.lastVoteTime = + new Date();
       }
       return post;
     })

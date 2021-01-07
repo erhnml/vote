@@ -1,15 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
 import { useToasts } from 'react-toast-notifications'
+
 import Layout from '../components/Layout';
 import LinkButton from '../components/LinkButton';
 import Input from '../components/Input';
 import Button from '../components/Button';
-
 import { LeftArrow } from '../components/icons';
+import {PostContext} from '../context/PostContext';
 
-const Detail = () => {
+const Create = () => {
   const { addToast } = useToasts()
+  const { posts, addPost } = useContext(PostContext);
   const [state, setState] = useState({
     linkName: '',
     linkURL: ''
@@ -21,12 +23,29 @@ const Detail = () => {
   }
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     if(!linkName || !linkURL ) {
-      addToast('Link Name and Link URL required!', {
+     return addToast('Link Name and Link URL required!', {
         appearance: 'error',
         autoDismiss: true,
       })
     }
+    const post = {
+      id: posts[posts.length - 1].id + 1,
+      name: linkName,
+      link: linkURL,
+      vote: 0,
+      lastVoteTime: 0
+    };
+    addPost(post)
+    addToast('Post Added!', {
+      appearance: 'success',
+      autoDismiss: true,
+    })
+    setState({
+      linkName: '',
+      linkURL: ''
+    })
   }
   return (
     <Layout>
@@ -54,4 +73,4 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `
-export default Detail;
+export default Create;
