@@ -3,11 +3,14 @@ import React, {useState, useContext} from 'react';
 import Layout from '../components/Layout';
 import ListItem from '../components/ListItem';
 import Pagination from '../components/Pagination';
+import Modal from '../components/Modal';
 
 import {PostContext} from '../context/PostContext';
 
 const List = () => {
-  const [currentPage, setCurrentPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isModalVisible, setIsModalVisible] = useState(true);
+
   const {posts} = useContext(PostContext);
 
   const start = (currentPage - 1) * 5;
@@ -33,6 +36,9 @@ const List = () => {
         changeStep={(step) => setCurrentPage(step)}
         currentPage={currentPage}
       />
+      <Modal isModalVisible={isModalVisible} onClose={() => setIsModalVisible(false)} title="Remove Link">
+        <span>test</span>
+      </Modal>
     </Layout>
   );
 }
