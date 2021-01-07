@@ -11,7 +11,9 @@ interface PostType {
 type ContextType = {
   posts: PostType[],
   removePost: (id:number) => void,
-  addPost: (post:PostType) => void
+  addPost: (post:PostType) => void,
+  upVote: (id:number) => void,
+  downVote: (id: number) => void
 }
 interface Props {
   children: React.ReactNode
@@ -20,14 +22,18 @@ export const PostContext = createContext<ContextType>({
   posts: [],
   removePost: () => {},
   addPost: () => {},
+  upVote: () => {},
+  downVote: () => {},
 });
 
 export const PostContextProvider = ({ children }:Props) => {
   const [posts, setPosts] = useState<PostType[]>(data);
+
   const removePost = (id: number) => {
     const filter = posts.filter((post) => post.id !== id)
     setPosts(filter)
   }
+
   const addPost = (post: PostType) => {
     const postData = {
       ...post,
@@ -36,8 +42,27 @@ export const PostContextProvider = ({ children }:Props) => {
     }
     setPosts([...posts, postData])
   }
+  const upVote = (id: number) => {
+    console.log('up')
+    const modifyPosts = posts.map(( post ) => {
+      if(post.id === id) {
+        post.vote = post.vote + 1
+      }
+      return post;
+    })
+    setPosts(modifyPosts)
+  }
+  const downVote = (id: number) => {
+    const modifyPosts = posts.map(( post ) => {
+      if(post.id === id) {
+        post.vote = post.vote - 1
+      }
+      return post;
+    })
+    setPosts(modifyPosts)
+  }
   return (
-    <PostContext.Provider value={{posts, removePost, addPost}}>
+    <PostContext.Provider value={{posts, removePost, addPost, upVote, downVote}}>
       {children}
     </PostContext.Provider>
   );

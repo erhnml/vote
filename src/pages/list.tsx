@@ -16,10 +16,10 @@ const options = [
 
 const List = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [order, setOrder] = useState<OptionType | null>(null);
 
-  const {posts} = useContext(PostContext);
+  const {posts, upVote, downVote} = useContext(PostContext);
 
   const start = (currentPage - 1) * 5;
   const end = currentPage * 5;
@@ -52,7 +52,12 @@ const List = () => {
       />
       {
        getPostList().map((post:PostType, index) => (
-          <ListItem key={index} post={post}/>
+          <ListItem 
+            key={index} 
+            post={post} 
+            onUpVote={(id) => upVote(id)}
+            onDownVote={(id) => downVote(id)}
+          />
         ))
       }
       <Pagination 
@@ -62,7 +67,10 @@ const List = () => {
         changeStep={(step) => setCurrentPage(step)}
         currentPage={currentPage}
       />
-      <Modal isModalVisible={isModalVisible} onClose={() => setIsModalVisible(false)} title="Remove Link">
+      <Modal 
+        isModalVisible={isModalVisible} 
+        onClose={() => setIsModalVisible(false)} 
+        title="Remove Link">
         <span>test</span>
       </Modal>
     </Layout>

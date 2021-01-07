@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import {Link} from 'react-router-dom';
 
@@ -9,13 +9,14 @@ export interface ListItemProps  {
     name: string,
     link: string,
     vote: number
-  }
+  },
+  onUpVote: (id: number) => void,
+  onDownVote: (id: number) => void
 }
 
-const ListItem = ({post}: ListItemProps) => {
+const ListItem = ({post, onUpVote, onDownVote}: ListItemProps) => {
   const {id, name, link, vote} = post;
   const [hover ,setHover] = useState(false)
-  const handleVote = () => alert('Voted')
 
   return (
     <Wrapper 
@@ -33,10 +34,10 @@ const ListItem = ({post}: ListItemProps) => {
         </TitleWrapper>
       </Content>
     <VoteWrapper>
-      <Vote onClick={handleVote}>
+      <Vote onClick={() => onUpVote(id)}>
         <Up />
       </Vote>
-      <Vote  onClick={handleVote}>
+      <Vote  onClick={() => onDownVote(id)}>
         <Down />
       </Vote>
     </VoteWrapper>
