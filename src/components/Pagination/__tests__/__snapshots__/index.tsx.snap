@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders correctly 1`] = `
+<Pagination
+  changeStep={[Function]}
+  currentPage={1}
+  total={10}
+/>
+`;

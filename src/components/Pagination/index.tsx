@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface PaginationProps {
-  onNext: () => void,
-  onPrev: () => void,
   changeStep: (step:number) => void,
   currentPage: number,
   total:number
@@ -13,11 +11,15 @@ interface StyledProps {
   active?: boolean
 }
 
-const Pagination = ({total, onNext, onPrev, changeStep, currentPage}: PaginationProps) => {
+const Pagination = ({total, changeStep, currentPage}: PaginationProps) => {
   const totalPage = Math.ceil(total / 5);
   return (
     <Wrapper>
-      {currentPage > 1 && <Step onClick={onPrev}>Prev</Step>}
+      {currentPage > 1 &&  (
+        <Step onClick={() => changeStep(currentPage - 1)}>
+          Prev
+        </Step>
+      )}
       {[...Array(totalPage)].map((e, i) => {
         const pageNumber = i + 1;
         return (
@@ -30,7 +32,11 @@ const Pagination = ({total, onNext, onPrev, changeStep, currentPage}: Pagination
         </Step>
         )
       })}
-      {currentPage < totalPage && <Step onClick={onNext}>Next</Step>}
+      {currentPage < totalPage && (
+        <Step onClick={() => changeStep(currentPage + 1)}>
+          Next
+        </Step>
+      )}
     </Wrapper>
   );
 }
@@ -40,7 +46,7 @@ const Wrapper = styled.div`
   justify-content: center;
   margin-top: 30px;
 `;
-const Step = styled.div`
+export const Step = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

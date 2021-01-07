@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders correctly 1`] = `
+<ListItemWrapper>
+  <ListItem
+    post={
+      Object {
+        "id": 1,
+        "lastVoteTime": 0,
+        "link": "https://unrealengine.com",
+        "name": "The future of Unreal Tournament begings today",
+        "vote": 0,
+      }
+    }
+  />
+</ListItemWrapper>
+`;

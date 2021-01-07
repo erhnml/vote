@@ -79,8 +79,6 @@ const List = () => {
       }
       <Pagination 
         total={posts.length}
-        onNext={() => setCurrentPage(currentPage + 1)}
-        onPrev={() => setCurrentPage(currentPage - 1)}
         changeStep={(step) => setCurrentPage(step)}
         currentPage={currentPage}
       />

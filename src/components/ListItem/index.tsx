@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications'
 
 import {PostContext} from '../../context/PostContext';
@@ -51,18 +51,15 @@ const ListItem = ({post, onRemove}: ListItemProps) => {
       {
         hover && (
           <DeleteIcon 
-            onClick={() => onRemove(post)} 
+            className="delete-button"
+            onClick={() => onRemove && onRemove(post)} 
           />
         )
       }
-      <Vote 
-        onClick={() => handleUp(id)}
-      >
+      <Vote onClick={() => handleUp(id)}>
         <Up />
       </Vote>
-      <Vote 
-        onClick={() => handleDown(id)}
-      >
+      <Vote onClick={() => handleDown(id)}>
         <Down />
       </Vote>
     </VoteWrapper>
@@ -124,7 +121,8 @@ const Vote = styled.div`
   pointer-events: click;
 `;
 
-const DeleteIcon = styled(Delete)`
+export const DeleteIcon = styled(Delete)`
   cursor: pointer;
 `;
+
 export default ListItem;

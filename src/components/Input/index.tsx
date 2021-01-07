@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface InputProps {
-  label: string,
+  label?: string,
   onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void,
   value?: string,
   name: string
@@ -12,7 +12,11 @@ const Input = ({ label, onChange, value, name }:InputProps) => {
   return (
     <Wrapper>
       <Label>{label}:</Label>
-      <StyledInput name={name} onChange={onChange} value={value}/>
+      <StyledInput 
+        name={name} 
+        onChange={onChange} 
+        value={value}
+      />
     </Wrapper>
   );
 }

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkButton renders correctly 1`] = `
+<MemoryRouter>
+  <LinkButton
+    title="Return to List"
+    to="/"
+  />
+</MemoryRouter>
+`;

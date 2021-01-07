@@ -8,7 +8,7 @@ export interface PostType {
 
 export interface ListItemProps  { 
   post: PostType,
-  onRemove: (post:PostType) => void
+  onRemove?: (post:PostType) => void
 }
 
 export type ContextType = {

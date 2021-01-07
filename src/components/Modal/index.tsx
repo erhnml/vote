@@ -7,7 +7,7 @@ import {Close} from '../icons';
 interface ModalProps {
   isModalVisible: boolean,
   title: string,
-  children: React.ReactNode,
+  children?: React.ReactNode,
   onClose?: () => void,
   onOk?: () => void,
 }
@@ -87,7 +87,7 @@ const Content = styled.div`
 const Title = styled.span`
   color: white;
 `;
-const CloseIcon = styled(Close)`
+export const CloseIcon = styled(Close)`
   cursor: pointer;
 `;
 export default Modal;
