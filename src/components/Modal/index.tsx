@@ -51,8 +51,10 @@ const Wrapper = styled.div`
   transition: all .2s ease-in-out;
   ${({ isModalVisible }:{isModalVisible: boolean}) => !isModalVisible ? `
       opacity: 0;
+      visibility: hidden;
   ` : `
     opacity: 1;
+    visibility: visible;
   `}
 `;
 const StyledModal = styled.div`

@@ -16,11 +16,6 @@ const ListItem = ({post}: ListItemProps) => {
   const {id, name, link, vote} = post;
   const [hover ,setHover] = useState(false)
   const handleVote = () => alert('Voted')
-  const handleMouseEvet = (event:string) => {
-    console.log(event)
-  }
-
- 
 
   return (
     <Wrapper 
@@ -58,7 +53,6 @@ const Wrapper = styled.div`
   border-bottom: 1px solid #c4c3c3;
   padding-bottom: 10px;
   background-color: ${({ hover }:{hover: boolean}) => hover ? 'rgba(234, 91, 12, 0.3)' : 'transparent'};
-  cursor: pointer;
   padding: 10px 10px;
 `;
 const Content = styled(Link)`
