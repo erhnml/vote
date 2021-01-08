@@ -32,7 +32,7 @@ const Label = styled.span`
 const StyledInput = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.gray};
   border-radius: 5px;
-  height: 30px;
+  height: 35px;
   padding-left: 10px;
 `;
 

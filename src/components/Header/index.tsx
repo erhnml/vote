@@ -17,6 +17,7 @@ const Header = () => {
     </Wrapper>
   );
 }
+
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.orange};
 `;
@@ -30,6 +31,9 @@ const HeaderContent = styled.div`
 const LogoWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 768px) {
+    padding-left: 15px;
+  }
 `;
 const LogoTitle = styled.span`
   color: white;

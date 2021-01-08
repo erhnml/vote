@@ -8,7 +8,8 @@ interface PaginationProps {
 }
 
 interface StyledProps {
-  active?: boolean
+  active?: boolean,
+  theme: any
 }
 
 const Pagination = ({total, changeStep, currentPage}: PaginationProps) => {
@@ -48,7 +49,7 @@ const Wrapper = styled.div`
   justify-content: center;
   margin-top: 30px;
 `;
-export const Step = styled.button`
+export const Step = styled.button<StyledProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,10 +60,10 @@ export const Step = styled.button`
   cursor: pointer;
   border: none;
   font-size: 14px;
-  background-color: #dddddd;
-  ${({active}:StyledProps) => active && `
-    background-color: black;
-    color: white;
+  background-color: ${({ theme }) => theme.colors.lightGray};
+  ${({active, theme}:StyledProps) => active && `
+    background-color: ${theme.colors.black};
+    color: ${theme.colors.white};
   `}
 `;
 export default Pagination;

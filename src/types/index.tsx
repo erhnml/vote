@@ -5,7 +5,6 @@ export interface PostType {
   vote: number,
   lastVoteTime: number
 }
-
 export interface ListItemProps  { 
   post: PostType,
   onRemove?: (post:PostType) => void

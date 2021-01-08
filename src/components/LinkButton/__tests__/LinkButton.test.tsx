@@ -1,7 +1,8 @@
 
 import React from 'react';
-import {  mount } from 'enzyme';
 import {  MemoryRouter } from "react-router-dom";
+
+import { mountWithTheme } from '../../../helpers/test';
 import LinkButton from '../index';
 import { Delete } from '../../icons';
 
@@ -15,7 +16,7 @@ describe('LinkButton', () => {
   });
 
   it('mount correctly', () => {
-    expect(() => mount(
+    expect(() => mountWithTheme(
       <MemoryRouter>
         <LinkButton to="/" title="Return to List" />
       </MemoryRouter>
@@ -23,7 +24,7 @@ describe('LinkButton', () => {
   });
 
   it('should render with icon', () => {
-    const wrapper = mount(
+    const wrapper = mountWithTheme(
       <MemoryRouter>
         <LinkButton 
           to="/"

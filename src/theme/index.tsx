@@ -8,11 +8,16 @@ export interface ThemeProps  {
 const theme = {
   colors: {
     orange:"#ea5b0c",
-    gray: "#343434"
+    lightOrange: "rgba(234, 91, 12, 0.3)",
+    gray: "#343434",
+    black: '#000000',
+    lightGray: "#dddddd",
+    white: '#fff',
   }
 }
 
 const Theme = ({ children }:ThemeProps) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
+
 export default Theme;

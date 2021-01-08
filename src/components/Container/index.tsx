@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 export interface ContainerProps  { 
   children: React.ReactNode
 }
@@ -14,7 +13,8 @@ const Container = ({ children }:ContainerProps) => {
 }
 
 const Wrapper = styled.div`
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 `;
+
 export default Container;

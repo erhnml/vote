@@ -68,7 +68,7 @@ const StyledModal = styled.div`
   `}
 `;
 const Header = styled.div`
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.black};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,14 +78,14 @@ const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 const Content = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   padding: 20px;
 `;
 const Title = styled.span`
-  color: white;
+  color: ${({ theme }) => theme.colors.white};
 `;
 export const CloseIcon = styled(Close)`
   cursor: pointer;

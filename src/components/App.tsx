@@ -7,7 +7,6 @@ import {
 import { ToastProvider } from 'react-toast-notifications'
 
 import PostContextProvider from '../context/PostContext';
-
 import Create from '../pages/create';
 import List from '../pages/list';
 import Theme from '../theme';

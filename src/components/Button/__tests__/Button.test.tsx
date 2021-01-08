@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { mountWithTheme } from '../../../helpers/test';
 import Button from '../index';
 
 describe('Button', () => {
@@ -9,12 +9,12 @@ describe('Button', () => {
   });
 
   it('mount correctly', () => {
-    expect(() => mount(<Button title="Add" />)).not.toThrow();
+    expect(() => mountWithTheme(<Button title="Add" />)).not.toThrow();
   });
 
   it('should trigger event correctly', () => {
     const onClick = jest.fn();
-    const wrapper = mount(<Button title="Add" onClick={onClick} />);
+    const wrapper = mountWithTheme(<Button title="Add" onClick={onClick} />);
     wrapper.find('button').simulate('click')
     expect(onClick).toBeCalled();
   });

@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import ListItem from '../components/ListItem';
 import Pagination from '../components/Pagination';
 import LinkButton from '../components/LinkButton';
-
+import { Plus } from '../components/icons';
 import Modal from '../components/Modal';
 import {PostContext} from '../context/PostContext';
 import { PostType } from '../types';
@@ -16,27 +16,23 @@ const options = [
   { value: 'lowToHige', label: 'Low to Hige' },
   { value: 'hideToLow', label: 'Hige to Low' },
 ]
-
-
 interface OptionType {
   value: string | null,
   label: string
 }
 
 const List = () => {
+  const { posts, removePost } = useContext(PostContext);
   const { addToast } = useToasts()
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [order, setOrder] = useState<OptionType | null>(null);
   const [selectedPost, setSelectedPost] = useState<PostType | null>(null);
 
-  const { posts, removePost } = useContext(PostContext);
-
-  const start = (currentPage - 1) * 5;
-  const end = currentPage * 5;
-
   const getPostList = () => {
     let postData = posts;
+    const start = (currentPage - 1) * 5;
+    const end = currentPage * 5;
     if(order) {
       const { value } = order;
       postData.sort((a,b) => b.lastVoteTime - a.lastVoteTime).sort((a,b) => {
@@ -50,6 +46,7 @@ const List = () => {
     setSelectedPost(post);
     setIsModalVisible(true)
   }
+
   const handleOk = () => {
     if(selectedPost) {
       const { id } = selectedPost;
@@ -62,6 +59,7 @@ const List = () => {
       setIsModalVisible(false)
     }
   }
+
   return (
     <Layout>
       <Wrapper>
@@ -71,7 +69,11 @@ const List = () => {
           value={order}
           onChange={(val: OptionType) => setOrder(val)}
         />
-        <LinkButton to="/create" title="Add New Link" />
+        <LinkButton 
+          to="/create" 
+          title="Add New Link" 
+          icon={<Plus />}
+        />
       </Wrapper>
       {
        getPostList().map((post:PostType, index) => (
@@ -108,4 +110,5 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 export default List;

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 interface ButtonProps {
   title: string,
   onClick?: React.MouseEventHandler<HTMLElement>,
@@ -9,12 +8,18 @@ interface ButtonProps {
 
 const Button = ({title, type, onClick}:ButtonProps) => {
   return (
-    <StyledButton type={type} onClick={onClick}>{title}</StyledButton>
+    <StyledButton 
+      type={type} 
+      onClick={onClick}
+    >
+      {title}
+    </StyledButton>
   );
 }
+
 const StyledButton = styled.button`
   border: none;
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.black};
   color: white;
   border-radius: 5px;
   padding: 10px 20px;

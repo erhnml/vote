@@ -2,8 +2,6 @@ import React, {useState, createContext, } from 'react';
 import data from '../data.json';
 import { PostType, ContextType } from '../types';
 
-
-
 interface Props {
   children: React.ReactNode
 }
@@ -40,6 +38,7 @@ export const PostContextProvider = ({ children }:Props) => {
     })
     setPosts(modifyPosts)
   }
+
   const downVote = (id: number) => {
     const modifyPosts = posts.map(( post ) => {
       if(post.id === id) {
@@ -50,6 +49,7 @@ export const PostContextProvider = ({ children }:Props) => {
     })
     setPosts(modifyPosts)
   }
+  
   return (
     <PostContext.Provider value={{posts, removePost, addPost, upVote, downVote}}>
       {children}

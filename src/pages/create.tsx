@@ -21,9 +21,9 @@ const Create = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setState({...state, [e.target.name]: e.target.value})
   }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
     if(!linkName || !linkURL ) {
      return addToast('Link Name and Link URL required!', {
         appearance: 'error',
@@ -47,13 +47,16 @@ const Create = () => {
       linkURL: ''
     })
   }
+
   return (
     <Layout>
-      <LinkButton 
-        to="/" 
-        title="Return to List"
-        icon={<LeftArrow />}
-      />
+      <HeaderButton>
+        <LinkButton 
+          to="/" 
+          title="Return to List"
+          icon={<LeftArrow />}
+        />
+      </HeaderButton>
       <Title>Add New Link</Title>
       <Form onSubmit={handleSubmit}>
         <Input name="linkName" label="Link Name" value={linkName}   onChange={handleChange} />
@@ -65,12 +68,21 @@ const Create = () => {
     </Layout>
   );
 }
+
 const Form = styled.form``;
 const Title = styled.h3`
   margin-top: 50px;
+  @media only screen and (max-width: 768px) {
+    margin-top: 20px;
+  }
 `;
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+`;
+
+const HeaderButton = styled.div`
+  max-width: 200px;
 `
+
 export default Create;
