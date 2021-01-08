@@ -56,6 +56,9 @@ const Wrapper = styled.div`
     opacity: 1;
     visibility: visible;
   `}
+  @media only screen and (max-width: 768px) {
+    padding: 0px 20px;
+  }
 `;
 const StyledModal = styled.div`
   width: 500px;

@@ -95,7 +95,6 @@ const VoteCount = styled.div`
   @media only screen and (max-width: 768px) {
     font-size: 14px;
     margin-right: 10px;
-    min-width: 20px;
   }
 `
 const TitleWrapper = styled.div`
