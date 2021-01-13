@@ -47,7 +47,6 @@ const ListItem = ({post, onRemove}: ListItemProps) => {
       {
         hover && (
           <DeleteIcon 
-            className="delete-button"
             onClick={() => onRemove && onRemove(post)} 
           />
         )

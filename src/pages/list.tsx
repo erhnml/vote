@@ -14,7 +14,7 @@ import { PostType } from '../types';
 
 const options = [
   { value: 'lowToHige', label: 'Low to Hige' },
-  { value: 'hideToLow', label: 'Hige to Low' },
+  { value: 'higeToLow', label: 'Hige to Low' },
 ]
 interface OptionType {
   value: string | null,
@@ -30,16 +30,15 @@ const List = () => {
   const [selectedPost, setSelectedPost] = useState<PostType | null>(null);
 
   const getPostList = () => {
-    let postData = posts;
     const start = (currentPage - 1) * 5;
     const end = currentPage * 5;
     if(order) {
       const { value } = order;
-      postData.sort((a,b) => b.lastVoteTime - a.lastVoteTime).sort((a,b) => {
+      posts.sort((a,b) => b.lastVoteTime - a.lastVoteTime).sort((a,b) => {
         return value === 'lowToHige' ? a.vote - b.vote : b.vote - a.vote
       })
     }
-    return postData.slice(start, end)
+    return posts.slice(start, end)
   }
   
   const handleRemove = (post: PostType) => {

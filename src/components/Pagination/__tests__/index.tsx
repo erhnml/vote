@@ -41,7 +41,7 @@ describe('Pagination', () => {
     expect(mockFn.mock.calls.length).toBe(3);
   });
 
-  it('should have correct step count', () => {
+  it('should has correct step count', () => {
     const wrapper = mountWithTheme(
       <Pagination 
         changeStep={() => {}}

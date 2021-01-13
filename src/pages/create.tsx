@@ -59,7 +59,7 @@ const Create = () => {
       </HeaderButton>
       <Title>Add New Link</Title>
       <Form onSubmit={handleSubmit}>
-        <Input name="linkName" label="Link Name" value={linkName}   onChange={handleChange} />
+        <Input name="linkName" label="Link Name" value={linkName} onChange={handleChange} />
         <Input name="linkURL" label="Link URL" value={linkURL} onChange={handleChange} />
         <ButtonWrapper>
           <Button title="Add" type="submit" />
