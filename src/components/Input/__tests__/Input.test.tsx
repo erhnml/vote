@@ -13,7 +13,7 @@ describe('Input', () => {
     expect(() => mountWithTheme(<Input name="linkName" />)).not.toThrow();
   });
 
-  it('should render the label', () => {
+  it('should render with label', () => {
     const wrapper = mountWithTheme(<Input name="linkName" label="Link URL" />);
     const label = wrapper.find('span').text(); 
     expect(label).toBe('Link URL:');
