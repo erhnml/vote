@@ -22,6 +22,7 @@ const Layout = ({children}:LayoutProps) => {
 }
 
 const Wrapper = styled.div``;
+
 const Content = styled.div`
   padding-top: 30px;
   @media only screen and (max-width: 768px) {

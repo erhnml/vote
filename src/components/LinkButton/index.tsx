@@ -28,9 +28,11 @@ const StyledLink = styled(Link)`
   border-radius: 3px;
   height: 38px;
 `;
+
 const Title = styled.span`
     ${({ icon }:{icon: React.ReactNode}) => icon && `
     margin-left: 10px;
   `}
 `;
+
 export default LinkButton;

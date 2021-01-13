@@ -49,6 +49,7 @@ const Wrapper = styled.div`
   justify-content: center;
   margin-top: 30px;
 `;
+
 export const Step = styled.button<StyledProps>`
   display: flex;
   justify-content: center;
@@ -66,4 +67,5 @@ export const Step = styled.button<StyledProps>`
     color: ${theme.colors.white};
   `}
 `;
+
 export default Pagination;

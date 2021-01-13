@@ -25,7 +25,6 @@ function App() {
         </PostContextProvider>
       </ToastProvider>
     </Theme>
-    
   );
 }
 

@@ -70,12 +70,14 @@ const Create = () => {
 }
 
 const Form = styled.form``;
+
 const Title = styled.h3`
   margin-top: 50px;
   @media only screen and (max-width: 768px) {
     margin-top: 20px;
   }
 `;
+
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -83,6 +85,6 @@ const ButtonWrapper = styled.div`
 
 const HeaderButton = styled.div`
   max-width: 200px;
-`
+`;
 
 export default Create;

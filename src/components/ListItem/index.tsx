@@ -76,11 +76,13 @@ const Wrapper = styled.div`
   };
   padding: 10px 10px;
 `;
+
 const Content = styled.div`
   display: flex;
   align-items: center;
   text-decoration: none;
 `;
+
 const VoteCount = styled.div`
   display: flex;
   justify-content: center;
@@ -96,11 +98,13 @@ const VoteCount = styled.div`
     font-size: 14px;
     margin-right: 10px;
   }
-`
+`;
+
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 const Name = styled.span`
   color: ${({ theme }) => theme.colors.orange};
   font-weight: 500;
@@ -109,6 +113,7 @@ const Name = styled.span`
     font-size: 14px;
   }
 `;
+
 const Target = styled.span`
   color: ${({ theme }) => theme.colors.gray};
   font-weight: 500;
@@ -116,9 +121,11 @@ const Target = styled.span`
     font-size: 14px;
   }
 `;
+
 const VoteWrapper = styled.div`
   display: flex;
 `;
+
 const Vote = styled.div`
   display: flex;
   flex-direction: column;

@@ -60,6 +60,7 @@ const Wrapper = styled.div`
     padding: 0px 20px;
   }
 `;
+
 const StyledModal = styled.div`
   width: 500px;
   margin-top: -200px;
@@ -70,6 +71,7 @@ const StyledModal = styled.div`
     transform: translateY(0px);
   `}
 `;
+
 const Header = styled.div`
   background-color: ${({ theme }) => theme.colors.black};
   display: flex;
@@ -77,20 +79,25 @@ const Header = styled.div`
   justify-content: space-between;
   padding: 10px;
 `;
+
 const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px;
   background-color: ${({ theme }) => theme.colors.white};
 `;
+
 const Content = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 20px;
 `;
+
 const Title = styled.span`
   color: ${({ theme }) => theme.colors.white};
 `;
+
 export const CloseIcon = styled(Close)`
   cursor: pointer;
 `;
+
 export default Modal;

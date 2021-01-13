@@ -21,6 +21,7 @@ const Header = () => {
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.orange};
 `;
+
 const HeaderContent = styled.div`
   padding: 15px 0px;
   height: 75px;
@@ -28,6 +29,7 @@ const HeaderContent = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
+
 const LogoWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -35,11 +37,13 @@ const LogoWrapper = styled.div`
     padding-left: 15px;
   }
 `;
+
 const LogoTitle = styled.span`
   color: white;
   font-size: 24px;
   font-weight: bold;
 `;
+
 const LogoSubTitle = styled.span`
   font-size: 12px;
   font-weight: bold;
